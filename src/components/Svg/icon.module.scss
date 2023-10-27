@@ -1,0 +1,12 @@
+@use '../../styles/style' as *;
+
+.wrapper {
+
+  .icon_gray{
+    color: $color-black-100;
+  }
+}
+
+.wrapper_pointer {
+  cursor: pointer;
+}

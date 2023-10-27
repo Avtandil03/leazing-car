@@ -1,0 +1,46 @@
+@use "../../styles/style.scss" as *;
+
+.wrapper {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+
+  &:has(.numberInput:disabled){
+    opacity: 0.5;
+  }
+}
+
+.label {
+  line-height: 20px;
+  margin-bottom: 24px;
+
+  @include mobile {
+    margin-bottom: 8px;
+  }
+}
+
+.numberInput {
+  color: $color-black-400;
+  font-family: "Nekst-Black";
+  font-size: 30px;
+  font-weight: 900;
+  line-height: 36px;
+  border-radius: 16px;
+  background-color: $color-black-100;
+  padding: 16px 24px;
+  border: 2px solid transparent;
+
+  &:focus{
+    background-color: $color-white;
+    border: 2px solid $color-black-100;
+  }
+
+  &:disabled{    
+    cursor: not-allowed;
+  }
+}
+
+.rangeInput {
+  margin: -13px 24px 0 24px;
+  height: 20px; 
+}

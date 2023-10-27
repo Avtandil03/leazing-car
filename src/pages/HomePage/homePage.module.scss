@@ -1,0 +1,9 @@
+@use '../../styles/style.scss' as *;
+
+.homaPage{
+  
+}
+
+.container{
+  @include container;
+}

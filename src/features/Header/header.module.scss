@@ -1,0 +1,167 @@
+@use "../../styles/style.scss" as *;
+
+.header {
+  position: sticky;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  background-color: $color-white;
+  z-index: 4;
+
+  @include mobile {
+    background-color: $color-black;
+    color: $color-white;
+    .brandIcon {
+      color: $color-white;
+    }
+    .burgerSvg {
+      color: $color-white;
+    }
+  }
+}
+
+.header.sliderIsOut {
+  @include mobile {
+    background-color: $color-white;
+  }
+  .burgerSvg {
+    color: $color-black-800;
+  }
+    .brandIcon {
+      color: $color-black-800;
+    }
+}
+
+.container {
+  @include container;
+  height: 90px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+
+  @include tablet {
+    height: 80px;
+  }
+
+  @include mobile {
+    height: 70px;
+  }
+}
+
+.brandWrapper {
+  display: flex;
+  gap: 17px;
+  align-items: center;
+}
+
+.brandIcon {
+  color: $color-black-800;
+  @include desktop {
+    width: 200px;
+    height: 35px;
+  }
+}
+
+.devider {
+  width: 1px;
+  height: 30px;
+  background-color: $color-light-gray;
+  @include mobile {
+    display: none;
+  }
+}
+
+.brandText {
+  color: $color-light-gray;
+  @include mobile {
+    display: none;
+  }
+}
+
+.menu {
+  @include mobile-tablet {
+    display: none;
+  }
+
+  display: flex;
+  gap: 40px;
+  align-items: center;
+}
+
+.navLinkList {
+  display: flex;
+  gap: 32px;
+}
+
+.navLink {
+  display: inline-block;
+  font-weight: 700;
+  line-height: 24px;
+  height: 36px;
+  padding: 6px 16px;
+  border-radius: 8px;
+  &:hover {
+    background-color: $color-black-100;
+  }
+}
+
+.headerSendBtn {
+  width: 174px;
+}
+
+.burgerBtn {
+  @include laptop-desktop {
+    display: none;
+  }
+
+  border: 0px;
+  border-radius: 8px;
+  background-color: transparent;
+  &:active {
+    transform: scale(95%);
+  }
+  display: flex;
+  align-items: center;
+}
+
+.burgerSvg {
+  color: $color-black-800;
+}
+
+.leazingLink {
+  position: relative;
+  &:hover .leazingNavLinks,
+  &:focus-within .leazingNavLinks {
+    top: 44px;
+    visibility: visible;
+    opacity: 1;
+  }
+}
+
+.leazingNavLinks {
+  width: 243px;
+  height: 135px;
+  border-radius: 15px;
+  border: 1px solid $color-black-100;
+  padding: 8px 0px;
+  position: absolute;
+  top: 32px;
+  left: 0;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+  padding-top: 8px;
+  transition: 0.6s;
+  visibility: hidden;
+  opacity: 0;
+  background-color: $color-white;
+
+  .navLink {
+    border-radius: 0;
+    display: block;
+    height: 40px;
+    padding: 8px 16px;
+    font-weight: 400;
+    color: $color-black-800;
+  }
+}

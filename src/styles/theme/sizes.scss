@@ -1,0 +1,24 @@
+// Example of mixin
+
+$container-desktop-padding: 48px;
+$container-tablet-padding: 36px;
+$container-mobile-padding: 20px;
+
+@mixin container {
+  max-width: 1440px;
+  width: 100%;
+  margin: 0 auto;
+
+  padding-left: $container-desktop-padding;
+  padding-right: $container-desktop-padding;
+
+  @include tablet {
+    padding-left: $container-tablet-padding;
+    padding-right: $container-tablet-padding;
+  }
+
+  @include mobile {
+    padding-left: $container-mobile-padding;
+    padding-right: $container-mobile-padding;
+  }
+}

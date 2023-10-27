@@ -1,0 +1,123 @@
+$slider-width-number: 1440;
+$slider-width: #{$slider-width-number}px;
+$slider-height: 2px;
+$background-slider: #E1E1E1;
+$background-filled-slider: #FF9514;
+$thumb-size: 20px;
+$thumb-radius: 50%;
+$thumb-background: #FF9514;
+$thumb-border: none;
+$shadow-size: -9px;
+$fit-thumb-in-slider: -9px;
+
+@function makelongshadow($color, $size) {
+  $val: 5px 0 0 $size $color;
+  
+  @for $i from 6 through $slider-width-number {
+    $val: #{$val}, #{$i}px 0 0 $size #{$color};
+  }
+  
+  @return $val;
+}
+
+.wrapper{
+  display: flex;
+  justify-content: center;
+}
+
+.rangeInput {
+  align-items: center;
+  appearance: none;
+  background: none;
+  cursor: pointer;
+  display: flex;
+  height: 100%;
+  overflow: hidden;
+  width: $slider-width;
+
+  &:focus {
+    box-shadow: none;
+    outline: none;
+  }
+
+  &:disabled{
+    cursor: not-allowed;
+  }
+  
+  &::-webkit-slider-runnable-track {
+    background: $background-filled-slider;
+    content: '';
+    height: $slider-height;
+    pointer-events: none;
+  }
+  
+  &::-webkit-slider-thumb { 
+    width:  $thumb-size;
+    height:  $thumb-size;
+    
+    appearance: none;
+    background: $thumb-background;
+    border-radius: $thumb-radius;
+    box-shadow: makelongshadow($background-slider, $shadow-size);
+    margin-top: $fit-thumb-in-slider;
+    border: $thumb-border;
+  }
+  
+  
+  &::-moz-range-track {
+    width: $slider-width;
+    height: $slider-height;
+  }
+
+  &::-moz-range-thumb { 
+    width:  $thumb-size;
+    height:  $thumb-size;
+
+    background: $thumb-background;
+    border-radius: $thumb-radius;
+    border: $thumb-border;
+    position: relative;
+  }
+
+  &::-moz-range-progress {
+    height: $slider-height;
+    background: $background-filled-slider;
+    border: 0;
+    margin-top: 0;
+  }
+
+  &::-ms-track {
+    background: transparent;
+    border: 0;
+    border-color: transparent;
+    border-radius: 0;
+    border-width: 0;
+    color: transparent;
+    height: $slider-height;
+    margin-top: 10px;
+    width: $slider-width;
+  }
+  
+  &::-ms-thumb { 
+    width:  $thumb-size;
+    height:  $thumb-size;
+
+    background: $thumb-background;
+    border-radius: $thumb-radius;
+    border: $thumb-border;
+  }
+
+  &::-ms-fill-lower {
+    background: $background-filled-slider;
+    border-radius: 0;
+  }
+
+  &::-ms-fill-upper {
+    background: $background-slider;
+    border-radius: 0;
+  }
+
+  &::-ms-tooltip {
+    display: none;
+  }
+}

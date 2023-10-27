@@ -1,0 +1,148 @@
+@use "../../styles/style.scss" as *;
+
+.button {
+  cursor: pointer;
+  font-weight: 700;
+  line-height: 24px;
+  padding: 12px 24px;
+  border-radius: 40px;
+  height: 48px;
+  min-width: 48px;
+  transition: 0.2s;
+  border: 2px solid transparent;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  overflow: inherit;
+}
+
+.primary {
+  background-color: $color-primary;
+  color: $color-white;
+
+  &:hover {
+    background-color: $color-black-800;
+  }
+
+  &:active {
+    background-color: $color-black-400;
+  }
+
+  &:disabled {
+    background-color: $color-primary;
+    color: $color-white;
+    opacity: 0.5;
+    cursor: not-allowed;
+  }
+}
+
+.light {
+  background-color: transparent;
+  border: 2px solid $color-primary;
+  color: $color-primary;
+
+  &:hover {
+    background-color: $color-primary;
+    color: $color-white;
+  }
+
+  &:active {
+    background-color: #ffa83d;
+    color: $color-white;
+  }
+
+  &:disabled {
+    background-color: transparent;
+    color: $color-primary;
+    opacity: 0.5;
+    cursor: not-allowed;
+  }
+}
+
+.dark {
+  background-color: $color-black-100;
+  color: $color-black-800;
+
+  &:hover {
+    background-color: $color-black-800;
+    color: $color-white;
+  }
+
+  &:active {
+    background-color: $color-black-400;
+    color: $color-white;
+  }
+
+  &:disabled {
+    opacity: 0.5;
+    cursor: not-allowed;
+    background-color: $color-black-100;
+    color: $color-black-800;
+  }
+}
+
+.slideBtn {
+  position: relative;
+  background-color: transparent;
+  border-radius: 50%;
+  padding: 0;
+  color: $color-black-800;
+  border: 2px solid rgba($color-black-100, 0.2);
+  color: $color-white;
+
+  &:hover {
+    background-color: rgba($color-black-400, 0.5);
+    color: $color-white;
+  }
+
+  &:active {
+    background-color: $color-black-400;
+    color: $color-white;
+  }
+
+  &:disabled {
+    opacity: 0.5;
+    cursor: not-allowed;
+  }
+}
+
+.loader {
+  margin: auto;
+  width: 21px;
+  height: 21px;
+  display: block;
+  border-radius: 50%;
+  border: 2px solid;
+  border-top-color: transparent;
+  animation: spin 1s infinite ease-in-out;
+}
+
+@keyframes spin {
+  0% {
+    transform: rotate(0deg);
+  }
+  100% {
+    transform: rotate(360deg);
+  }
+}
+
+@keyframes circleAnimation {
+  0% {
+    stroke-dasharray: 0 138.2;
+  }
+  100% {
+    stroke-dasharray: 138.2 0;
+  }
+}
+
+.processCircle{
+  stroke-dasharray: 0 138.2;
+  width: calc(100% + 2px);
+  height: calc(100% + 2px);
+  stroke-dasharray: 0 138.2;
+  animation-name: circleAnimation;
+  animation-duration: 10s;
+  animation-fill-mode: forwards;
+  position: absolute;
+  animation-timing-function: linear;
+}
