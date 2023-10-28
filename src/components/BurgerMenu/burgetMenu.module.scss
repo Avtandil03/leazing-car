@@ -1,0 +1,83 @@
+@use '../../styles/style.scss' as *;
+
+.burgerWrapper{
+  @include laptop-desktop{
+    display: none !important;
+  }
+}
+
+.burgerMenu{
+  position: fixed;
+  top: 0;
+  right: 0;
+  padding: 24px 32px 44px 44px;
+  background-color: $color-white;
+  color: $color-black-400;
+  height: 100vh;
+  width: 329px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+
+  @media (max-width:330px){
+    width: 260px;
+    padding: 24px 12px 24px 20px;
+  }
+
+  ul{
+    display: flex;
+    flex-direction: column;
+    gap: 24px;
+  }
+
+  li {
+    font-size: 24px;
+    line-height: 24px;
+    color: $color-black-400;
+    font-weight: 700;
+  }
+}
+
+.closeBtn{
+  width: 32px;
+  height: 32px;
+  overflow: hidden;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border: none;
+  background-color: transparent;
+  transition: 0.2s;
+  margin-left: auto;
+
+
+  &:active{
+    transform: scale(80%);
+  }
+}
+
+.crossIcon{
+  color: $color-black-800;
+  transform: scale(200%);
+}
+
+.subLink{
+  margin-left: 15px;
+  font-size: 16px;
+  height: 16px;
+  color: $color-black-400;
+  font-weight: 400;
+
+
+  &::before{
+    content: '- ';
+  }
+}
+
+.openModalBtn{
+  width: 100%;
+  top:auto;
+  margin-top: auto;
+  bottom: 0;
+  margin-bottom: 0;
+}

@@ -1,6 +1,6 @@
-import React from "react";
+import React, { useState } from "react";
 import s from "./header.module.scss";
-import { Button, Svg } from "@/components";
+import { BurgerMenu, Button, Svg } from "@/components";
 import cn from "classnames";
 
 interface HeaderProps{
@@ -9,6 +9,8 @@ interface HeaderProps{
 }
 
 export function Header({sliderIsOut, openAppModal}: HeaderProps) {
+  const [isBurgerOpen, setIsBurgerOpen] = useState(false)
+  
   return (
     <header className={cn(s.header, {[s.sliderIsOut]: sliderIsOut})}>
       <div className={s.container}>
@@ -34,10 +36,16 @@ export function Header({sliderIsOut, openAppModal}: HeaderProps) {
             onClick={() => {openAppModal()}} 
           >Оставить заявку</Button>
         </menu>
-        <button className={s.burgerBtn}>
+        <button className={s.burgerBtn} onClick={() => setIsBurgerOpen(true)}>
           <Svg name="burger" className={s.burgerSvg}/>
         </button>
       </div>
+
+      <BurgerMenu 
+        isOpen={isBurgerOpen} 
+        onClose={() => setIsBurgerOpen(false)}
+        openAppModal={openAppModal}
+      />
     </header>
   );
 }
