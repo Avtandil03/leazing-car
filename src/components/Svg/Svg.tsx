@@ -71,7 +71,7 @@ export const Svg: FC<SvgProps> = ({ name, className }) => {
             fill="none"
             className={`${s.icon} ${className}`}
           >
-            <rect width="48" height="48" rx="24" fill="#F3F3F4" />
+            <rect width="48" height="48" rx="24" fill="none" />
             <path
               d="M30.5996 17.4004L17.4003 30.5997"
               stroke="#828282"

@@ -8,9 +8,10 @@ import { useOutObserver } from "@/shared/hooks";
 
 interface SliderProps{
   setIsOut?: (valu: boolean) => void
+  openAppModal: () => void
 }
 
-export function Slider({ setIsOut }: SliderProps) {
+export function Slider({ setIsOut, openAppModal }: SliderProps) {
   const [ref, isOut] = useOutObserver<HTMLDivElement>();
 
   useEffect(() => {
@@ -57,21 +58,13 @@ export function Slider({ setIsOut }: SliderProps) {
             <div className={s.item}>
               <h1 className={s.title}>{el.title}</h1>
               <p className={s.attraction}>{el.attraction}</p>
-              <Button className={s.modalBtn} variant="primary" onClick={() => {}}>
+              <Button className={s.modalBtn} variant="primary" onClick={() => openAppModal()}>
                 Оставить заявку
               </Button>
             </div>
           </>
         ))}
       </Carousel>
-
-      <div className={s.points}>
-        {dataList.map((el, i) => (
-          <div className={s.point} key={el.id} onClick={() => {}}></div>
-        ))}
-      </div>
-
-      <div className={s.sliderBtns}></div>
     </div>
   );
 }

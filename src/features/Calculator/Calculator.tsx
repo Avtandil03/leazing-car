@@ -2,7 +2,11 @@ import { Button, ScrollInput } from "@/components";
 import React, { useState } from "react";
 import s from "./calculator.module.scss";
 
-export function Calculator() {
+interface CalculatorProps{
+  openAppModal: () => void
+}
+
+export function Calculator({openAppModal}: CalculatorProps) {
   const interestRate = 10
   const [carCost, setCarCost] = useState(3000000);
   const [initialFee, setInitialFee] = useState(carCost * 0.1);
@@ -82,7 +86,7 @@ export function Calculator() {
           <p className={s.resDescription}>Ежемесячный платеж от</p>
           <h3 className={s.resTitle}>{`${monthlyPayment} ₽`}</h3>
         </div>
-        <Button className={s.resModalBtn} variant="primary" onClick={() => {}}>
+        <Button className={s.resModalBtn} variant="primary" onClick={() => openAppModal()}>
           Оставить заявку
         </Button>
       </div>

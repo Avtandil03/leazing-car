@@ -5,9 +5,10 @@ import cn from "classnames";
 
 interface HeaderProps{
   sliderIsOut: boolean
+  openAppModal: () => void
 }
 
-export function Header({sliderIsOut}: HeaderProps) {
+export function Header({sliderIsOut, openAppModal}: HeaderProps) {
   return (
     <header className={cn(s.header, {[s.sliderIsOut]: sliderIsOut})}>
       <div className={s.container}>
@@ -30,7 +31,7 @@ export function Header({sliderIsOut}: HeaderProps) {
           <Button 
             className={s.headerSendBtn} 
             variant="light" 
-            onClick={() => {console.log('clicked')}} 
+            onClick={() => {openAppModal()}} 
           >Оставить заявку</Button>
         </menu>
         <button className={s.burgerBtn}>

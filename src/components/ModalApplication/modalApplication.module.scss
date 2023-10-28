@@ -1,0 +1,157 @@
+@use "../../styles/style.scss" as *;
+
+.modalWrapper {
+  align-items: end;
+}
+
+.modal {
+  background-color: $color-white;
+  border-radius: 32px 32px 0 0;
+  width: 100vw;
+  height: 78vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  position: relative;
+  min-height: 478px;
+
+  @include mobile {
+    height: 84hv;
+    align-items: start;
+  }
+}
+
+.modalContent{
+  width: 655px;
+
+  @include tablet {
+    width: 100%;
+    padding-left: 36px;
+    padding-right : 36px;
+  }
+
+  @include mobile{
+    padding: 24px 21px;
+  }
+
+}
+
+.closeBtn {
+  width: 48px;
+  height: 48px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: absolute;
+  top: 48px;
+  right: 48px;
+  border:none;
+  border-radius: 50%;
+  transition: 0.1s;
+
+  &:hover{
+    opacity: 0.8;
+  }
+
+  &:active{
+    transform: scale(95%);
+  }
+
+
+  @include laptop {
+    right: 28px;
+  }
+
+  @include tablet {
+    right: 36px;
+    top: 36px;
+  }
+
+  @include mobile {
+    width: 24px;
+    height: 24px;
+    right: 20px;
+    top: 24px;
+  }
+}
+
+.title {
+  color: $color-black-800;
+  font-family: 'Nekst-Black';
+  font-size: 54px;
+  font-weight: 900;
+  line-height: 48px;
+  margin-bottom: 24px;
+
+  @include mobile{
+    font-size: 22px;
+    line-height: 20px;
+    margin-bottom: 16px;
+  }
+}
+
+.description{
+  max-width: 466px;
+  margin-bottom: 44px;
+
+  @include mobile{
+    margin-bottom: 32px;
+  }
+}
+
+.inputs{
+  display: flex;
+  justify-content: space-between;
+  gap: 32px;
+  margin-bottom: 44px;
+
+  @include mobile{
+    flex-direction: column;
+    gap: 8px;
+    margin-bottom: 8px;
+  }
+
+  *{
+    flex:auto;
+  }
+}
+
+.sendingBlock{
+  display: flex;
+  flex-direction: row;
+  border: 2px solid $color-black-100;
+  padding: 26px 23px;
+  justify-content: space-between;
+  margin-bottom: 32px;
+  border-radius: 16px;
+
+  @include mobile{
+    border: none;
+    border-color: transparent;
+    flex-direction: column-reverse;
+    margin-bottom: 24px;
+    gap: 16px;
+    padding: 0;
+  }
+}
+
+.agreementInfo{
+  max-width: 351px;
+  color: $color-light-gray;
+  font-size: 14px;
+  line-height: 21px;
+
+  @include mobile{
+    text-align: center;
+  }
+
+  a{
+    color: $color-black;
+  }
+}
+
+.socials{
+  display: flex;
+  gap: 16px;
+  justify-content: center;
+}
