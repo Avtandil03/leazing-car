@@ -1,4 +1,4 @@
-import { FC, KeyboardEventHandler, useState } from 'react'
+import { FC, KeyboardEventHandler, useState, useEffect } from 'react'
 
 import s from './scrollInput.module.scss'
 import { RangeInput } from '@/shared/ui'
@@ -12,6 +12,7 @@ interface ScrollInputProps {
   labelText: string
   disabled?: boolean
   unit?: string
+  type?: string
 }
 export const ScrollInput: FC<ScrollInputProps> = ({ 
   min,
@@ -20,37 +21,50 @@ export const ScrollInput: FC<ScrollInputProps> = ({
   onChange,
   labelText,
   disabled = false,
-  unit = ''
+  unit = '',
+  type = ''
 }) => {
   const [id, _] = useState('scrollInput' + Date.now())
   const [numInputVal, setNumInputVal] = useState(value)
 
-  function handleRangeChange(val: number){
-    onChange(val)
-    setNumInputVal(val)
+  useEffect(() => {
+    setValue(value)
+  }, [value])
+  
+
+  function setValue(value: number){
+    setNumInputVal(value)
+    onChange(value)
   }
 
-  function handleKeyDown(e:any){
-    if(e.key !== 'Enter') return
-    if(numInputVal < min) {
-      setNumInputVal(min)
-    }else if (numInputVal > max){
-      setNumInputVal(max)
-    }
-    onChange(numInputVal)
+  function handlNumInputChange(e: any){
+    let value = e.target.value
+    setNumInputVal(value)
+  }
+
+  function handleSetVal(e: any){
+    let value = e.target.value
+
+    if(value < min) value = min
+    if(value > max) value = max
+    setValue(Number(value))
   }
 
   return (
     <div className={s.wrapper}>
       <label className={s.label} htmlFor={id}>{labelText}</label>
-      <input 
+      <input
+        type={type}
         id={id} 
         className={s.numberInput}
-        type="number" 
         value={numInputVal}
         disabled={disabled}
-        onChange={e => setNumInputVal(parseInt(e.target.value))}
-        onKeyDown={handleKeyDown}
+        onChange={handlNumInputChange}
+        onKeyDown={(e:any) => {
+          if(e.key !== 'Enter' || !e.target)  return
+          handleSetVal(e)
+        }}
+        onBlur={handleSetVal}
       />
       {unit && <span className={cn(s.unit, {[s.percent]: unit.includes('%')})}>{unit}</span>}
       <RangeInput 
@@ -59,7 +73,7 @@ export const ScrollInput: FC<ScrollInputProps> = ({
         min={min} 
         max={max}  
         disabled={disabled}
-        onChange={handleRangeChange} 
+        onChange={setValue} 
       />
     </div>
   )
