@@ -20,6 +20,7 @@ export function Slider({ setIsOut }: SliderProps) {
   
   return (
     <div 
+      id="leazing"
       ref={ref}
       className={s.slider}
     >

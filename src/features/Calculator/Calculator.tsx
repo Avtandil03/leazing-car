@@ -38,7 +38,7 @@ export function Calculator() {
     setResLeazingAmount(Math.round(initialFee + leazingTerm * monthlyPayment ))
   }
   return (
-    <div className={s.calculator}>
+    <div id="calculator" className={s.calculator}>
       <h2 className={s.title}>Рассчитайте стоимость автомобиля в лизинг</h2>
       <div className={s.scrolls}>
         <div className={s.scroll}>
