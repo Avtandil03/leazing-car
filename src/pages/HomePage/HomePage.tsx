@@ -3,6 +3,7 @@ import { Calculator } from '@/features/Calculator/Calculator'
 import { Slider } from '@/features/Slider/Slider'
 import { FC, useState } from 'react'
 import s from './homePage.module.scss'
+import Link from 'next/link'
 
 export const HomePage: FC = () => {
   const [sliderIsOut, setSliderIsOut] = useState(false)
@@ -12,6 +13,7 @@ export const HomePage: FC = () => {
       <main className={s.container}>
         <Slider setIsOut={setSliderIsOut}/>
         <Calculator/>
+        <Link className={s.exampleLink} href={'/example'} >Example page {'>>>'}</Link>
       </main>
     </div>
   )
