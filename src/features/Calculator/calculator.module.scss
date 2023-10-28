@@ -1,6 +1,120 @@
 @use "../../styles/style.scss" as *;
 
-.calculator{
-  @include container;
-  
+.calculator {
+  padding-top: 100px;
+}
+
+.title {
+  color: $color-black-800;
+  font-family: "Nekst-Black";
+  font-size: 54px;
+  font-weight: 900;
+  line-height: 48.6px;
+  margin-bottom: 32px;
+  flex-wrap: wrap;
+  max-width: 753px;
+
+  @include mobile {
+    font-size: 34px;
+    line-height: 31px;
+  }
+
+  @include tablet {
+    margin-bottom: 44px;
+  }
+
+  @include laptop {
+    margin-bottom: 44px;
+  }
+}
+
+.scrolls {
+  max-width: 1344px;
+  margin-bottom: 44px;
+  display: flex;
+  flex-direction: column;
+  gap: 32px;
+
+  @include desktop {
+    flex-direction: row;
+    justify-content: space-between;
+  }
+
+  @include mobile {
+    gap: 16px;
+    margin-bottom: 16px;
+  }
+
+  @include tablet {
+    margin-bottom: 35px;
+  }
+
+  @include laptop {
+    margin-bottom: 35px;
+  }
+}
+
+.scroll {
+  @include desktop {
+    max-width: 427px;
+  }
+}
+
+.results {
+  display: flex;
+  justify-content: space-between;
+  flex-wrap: wrap;
+}
+
+.resBlock {
+  width: 427px;
+  gap: 44px;
+
+  @include desktop {
+    gap: 32px;
+  }
+
+  @include tablet{
+    width: 345px;
+  }
+}
+
+.resDescriprion {
+  margin-bottom: 8px;
+  text-align: left;
+
+  @include mobile {
+    margin-bottom: 2px;
+    font-size: 14px;
+    line-height: 20px;
+  }
+}
+
+.resTitle {
+  font-family: 'Nekst-Black';
+  font-size: 54px;
+  font-weight: 900;
+  line-height: 48.6px;
+  text-align: left;
+  margin-bottom: 44px;
+
+  @include mobile{
+    margin-bottom: 22px;
+    font-size: 20px;
+    line-height: 20px;
+  }
+}
+
+.resModalBtn {
+  width: 427px;
+
+  @include tablet{
+    width: 345px;
+  }
+
+  @include mobile{
+    width: 100%;
+  }
+
+  margin-bottom: 130px;
 }

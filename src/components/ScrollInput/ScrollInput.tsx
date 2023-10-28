@@ -2,6 +2,7 @@ import { FC, KeyboardEventHandler, useState } from 'react'
 
 import s from './scrollInput.module.scss'
 import { RangeInput } from '@/shared/ui'
+import cn from 'classnames'
 
 interface ScrollInputProps {
   value: number
@@ -10,6 +11,7 @@ interface ScrollInputProps {
   max: number
   labelText: string
   disabled?: boolean
+  unit?: string
 }
 export const ScrollInput: FC<ScrollInputProps> = ({ 
   min,
@@ -17,14 +19,15 @@ export const ScrollInput: FC<ScrollInputProps> = ({
   value,
   onChange,
   labelText,
-  disabled = false
+  disabled = false,
+  unit = ''
 }) => {
   const [id, _] = useState('scrollInput' + Date.now())
   const [numInputVal, setNumInputVal] = useState(value)
 
   function handleRangeChange(val: number){
     onChange(val)
-    setNumInputVal(value)
+    setNumInputVal(val)
   }
 
   function handleKeyDown(e:any){
@@ -49,6 +52,7 @@ export const ScrollInput: FC<ScrollInputProps> = ({
         onChange={e => setNumInputVal(parseInt(e.target.value))}
         onKeyDown={handleKeyDown}
       />
+      {unit && <span className={cn(s.unit, {[s.percent]: unit.includes('%')})}>{unit}</span>}
       <RangeInput 
         className={s.rangeInput}
         value={value} 

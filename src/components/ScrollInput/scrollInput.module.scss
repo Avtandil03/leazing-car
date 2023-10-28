@@ -4,8 +4,9 @@
   width: 100%;
   display: flex;
   flex-direction: column;
+  position: relative;
 
-  &:has(.numberInput:disabled){
+  &:has(.numberInput:disabled) {
     opacity: 0.5;
   }
 }
@@ -30,17 +31,51 @@
   padding: 16px 24px;
   border: 2px solid transparent;
 
-  &:focus{
+  &:focus {
     background-color: $color-white;
     border: 2px solid $color-black-100;
   }
 
-  &:disabled{    
+  &:disabled {
     cursor: not-allowed;
+  }
+
+  @include mobile{
+    font-size: 22px;
+    line-height: 20px;
   }
 }
 
 .rangeInput {
   margin: -13px 24px 0 24px;
-  height: 20px; 
+  height: 20px;
+  z-index: 2;
+}
+
+.unit {
+  position: absolute;
+  background-color: transparent;
+  font-family: "Nekst-Black";
+  font-size: 22px;
+  line-height: 20px;
+  height: 48px;
+  font-weight: 900;
+  text-align: center;
+  right: 6px;
+  bottom: 18px;
+  border-radius: 16px;  
+  padding: 18px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  &.percent {
+    background-color: #e0e0e0;
+  }
+
+  @include mobile{
+    font-size: 22px;
+    line-height: 20px;
+    bottom: 14px;
+  }
 }
